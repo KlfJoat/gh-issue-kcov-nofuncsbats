@@ -1,10 +1,10 @@
-# Issue Text
+# Issue Text SimonKagstrom/kcov#476
 
 I'm running `kcov` on a few different repos of Bash scripts where I have extensive Bats test suites. I'd like to use it with the VSC extension Coverage Gutters.
 
 In these repos, I make heavy use of Bash functions. But I'm running into a problem where it seems like my extensive use of functions somehow hides the code from `kcov`.
 
-This repo is a runnable example.
+I have uploaded a runnable example at the following repo:  https://github.com/KlfJoat/gh-issue-kcov-nofuncsbats
 
 Versions of relevant programs
 
@@ -22,7 +22,7 @@ kcov --cobertura-only --include-path=. --exclude-path=test,coverage --clean cove
 
 ## Expected Output
 
-A `cov.xml` file that shows the code in the function has been executed at least once.
+A `cov.xml` file that shows any code in the function has been executed at least once.
 
 ## Actual Output
 
@@ -45,7 +45,7 @@ Your bash version is  '5.2.32(1)-release' != *\T\h\i\s\ \s\c\r\i\p\t\ \r\e\q\u\i
 ok 9 bash_versionnewerthan major 80 fail
 ```
 
-(the random `]]` and `!= *\T\h\i\s\ \s\c\r\i\p\t`... seems to be Bats interacting with kcov)
+(the random output besides TAP seems to be Bats interacting with kcov; it's not there when I run straight Bats)
 
 #### In [`coverage/cov.xml`](coverage/cov.xml)
 
